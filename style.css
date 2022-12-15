@@ -1,0 +1,338 @@
+@charset "UTF-8";
+
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: helvetica, 'Myriad Pro';
+  font-size: 16px;
+  margin: 0;
+  background-color: #18aad1;
+  background-repeat: repeat;
+}
+
+/*  old css for nav
+.topnav {
+    background-color: #f2ac77; 
+    position: relative;
+  }
+  
+  .topnav #myLinks {
+    display: none;
+  }
+  
+  .topnav a {
+    color: #ED3E2A; 
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    display: block;
+  }
+  
+  .topnav a.burger {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+    .topnav a:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    
+    .active {
+      background-color: #FCE9DB; 
+      color: white;
+    }
+  */
+
+/* all nav */
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+header {
+  margin: 0 1em;
+  padding: 1em; /*use padding to get more space */
+}
+
+nav {
+  width: 200px;
+  position: absolute;
+  left: -200px; /*off the screen to the right by 220px */
+  top: 0;
+  padding-top: 6em;
+  padding-bottom: 4em;
+  text-align: right;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #ed3e2a;
+  text-decoration: none;
+}
+
+li {
+  padding-bottom: 1em;
+  border-bottom: 3px solid white;
+}
+
+li:hover {
+  font-size: 1.1em;
+}
+
+li:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+/*header layout*/
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  align-items: center;
+}
+
+.toggleTrigger {
+  cursor: pointer;
+  display: inline;
+  font-size: 1em;
+  text-decoration: none;
+  color: #fff;
+  text-align: center;
+}
+
+.icon-bar {
+  width: 2em;
+  height: 4px;
+  display: block; /*inline by default */
+  background-color: #ed3e2a;
+}
+
+.icon-bar + .icon-bar {
+  /*all elements after + */
+  margin-top: 5px;
+}
+
+i,
+h2 a {
+  cursor: pointer;
+  color: #ed3e2a;
+  text-decoration: none;
+}
+
+/*set a width on the nav, position it in right direction so it's off the screen */
+
+#page-canvas {
+  /*shift over the canvas to the left */
+  height: 100%;
+  /*   transform: translateX(0); translate x direction */
+  transition: all 0.4s cubic-bezier(0.32, 1.25, 0.375, 1.15); /*takes args: duration, ease-in function https://cubic-bezier.com/#.17,.67,.83,.67 */
+  transform: translateZ(0) translateX(0); /*3d axis */
+}
+
+.show-nav #page-canvas {
+  transform: translateZ(0) translateX(200px); /*220 is the width of nav */
+}
+
+/* ----------- Making area ----------- */
+
+#avatar {
+  margin: auto;
+  width: 460px;
+  height: 460px;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #ffffff80;
+  border-radius: 20px;
+}
+
+svg {
+  position: center;
+  width: 85%;
+  height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ----------- option visual mobile -----------*/
+
+.options {
+  display: grid;
+  margin: auto;
+  width: 300px;
+  grid-column: 430px;
+  grid-gap: 20px;
+  grid-row: 83px;
+  justify-content: center;
+}
+
+.options_skin_tone,
+.options_accessories,
+.options_hair_colors,
+.options_hairstyles,
+.options_eyes,
+.options_eyebrows,
+.options_mouths,
+.options_beards,
+.options_background {
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 10px auto;
+  width: 430px;
+  height: 83px;
+  overflow-y: hidden;
+  background-color: #9cbd9c;
+  border-radius: 10px;
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+
+.st,
+.hc,
+.bg {
+  flex: 0 0 auto;
+  top: 0;
+  width: 53px;
+  height: 53px;
+  margin: 15px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #fff;
+  grid-row: 1/1;
+  grid-column: 1/1;
+}
+
+.icon {
+  flex: 0 0 auto;
+  top: 0;
+  width: 53px;
+  height: 53px;
+  margin: 15px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #fff;
+  background-image: url(https://images.squarespace-cdn.com/content/5c461c77ec4eb7bfa5bf0dd2/1574545137295-5G8MMXD9YAQITIYYPVZG/all+icons.png?content-type=image%2Fpng);
+}
+
+/*------background image icons
+#bg_1 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background1.png");
+  background-size: cover;
+}
+
+#bg_2 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background2.png");
+  background-size: cover;
+}
+
+#bg_3 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background3.png");
+  background-size: cover;
+}
+
+#bg_4 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background4.png");
+  background-size: cover;
+}
+
+#bg_5 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background5.png");
+  background-size: cover;
+}
+
+#bg_6 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background6.png");
+  background-size: cover;
+}
+
+#bg_7 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background7.png");
+  background-size: cover;
+}
+
+#bg_8 {
+  background-image: url("/Users/norafan/Desktop/cm523project/images/background/background8.png");
+  background-size: cover;
+}
+--------*/
+/* ------ MENU LIST BUTTON ------ */
+
+#menu {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+  width: 350px;
+  height: 70px;
+  overflow-y: hidden;
+  align-items: center;
+}
+
+.menu_button {
+  white-space: nowrap;
+  width: 200px;
+  display: grid;
+  border-radius: 10px;
+  color: #fff;
+  padding: 10px 10px;
+  background-color: #9cbd9c;
+  margin: 10px;
+  text-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+#previous {
+  width: 0px;
+  height: 0px;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 25px solid #9cbd9c;
+  margin-right: 20px;
+}
+
+#after {
+  width: 0px;
+  height: 0px;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 25px solid #9cbd9c;
+  margin-left: 20px;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+}
+
+.menu_button:focus {
+  background-color: #5d5455;
+}
